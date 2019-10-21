@@ -1,0 +1,13 @@
+﻿using ApiFactura.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ApiFactura.Services
+{
+    public interface IProcesaDatos
+    {
+        void ProcesarFactura(Factura factura);
+    }
+}

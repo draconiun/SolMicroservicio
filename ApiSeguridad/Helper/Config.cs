@@ -19,7 +19,8 @@ namespace ApiSeguridad.Helper
             return new List<ApiResource>
             {
                 new ApiResource("apifactura", "API CON SQL"),
-                new ApiResource("apihistorico", "API CON MONGO DB")
+                new ApiResource("apihistorico", "API CON MONGO DB"),
+                new ApiResource("apisender", "API para envíos")
             };
         }
 
@@ -42,7 +43,7 @@ namespace ApiSeguridad.Helper
                     },
 
                     // scopes that client has access to
-                    AllowedScopes = { "apifactura", "apihistorico" }
+                    AllowedScopes = { "apifactura", "apihistorico", "apisender" }
                 }
             };
         }

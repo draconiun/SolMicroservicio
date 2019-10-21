@@ -2,20 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ApiFactura.Contexto;
-using ApiFactura.Helper;
-using ApiFactura.Model;
-using ApiFactura.Services;
+using ApiSender.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace ApiFactura
+namespace ApiSender
 {
     public class Startup
     {
@@ -33,13 +29,6 @@ namespace ApiFactura
             services.AddOptions();
             services.Configure<ParametroConfig>(Configuration);
 
-            services.AddDbContext<DbVentasContext>(
-                    options =>
-                    {
-                        options.UseSqlServer(Configuration.GetValue<string>("CnnBd"));
-                    }
-                );
-
             //Federar la seguridad con Identity Server 4
             services.AddAuthentication("Bearer")
                     .AddIdentityServerAuthentication(
@@ -50,10 +39,6 @@ namespace ApiFactura
                             options.ApiName = Configuration.GetValue<string>("ApiNameSeguridad");
                         }
                     );
-            //services.AddTransient<IFacturaService, FacturaServiceMemoria>();
-            services.AddTransient<IFacturaService, FacturaServiceSQL>();
-            services.AddSingleton<IProcesaDatos, ProcesarDatos>();
-            services.AddSingleton<IRecibeSuscripcion, RecibeSuscripcion>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,9 +51,6 @@ namespace ApiFactura
 
             app.UseAuthentication();
             app.UseMvc();
-
-            IRecibeSuscripcion suscripcion = app.ApplicationServices.GetService<IRecibeSuscripcion>();
-            suscripcion.PreparaFiltro().GetAwaiter().GetResult();
         }
     }
 }
