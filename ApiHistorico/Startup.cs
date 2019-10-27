@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ApiHistorico.Helper;
+﻿using ApiHistorico.Helper;
 using ApiHistorico.Model;
 using ApiHistorico.Services;
 using Microsoft.AspNetCore.Builder;
@@ -10,8 +6,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace ApiHistorico
 {
@@ -31,6 +25,18 @@ namespace ApiHistorico
             services.AddOptions();
             services.Configure<ParametroConfig>(Configuration);
 
+            //Federar la seguridad con Identity Server 4
+            services.AddAuthentication("Bearer")
+                    .AddIdentityServerAuthentication(
+                        options =>
+                        {
+                            options.Authority = Configuration.GetValue<string>("UrlSeguridad");
+                            options.RequireHttpsMetadata = false;
+                            options.ApiName = Configuration.GetValue<string>("ApiNameSeguridad");
+                        }
+                    );
+
+
             services.AddTransient<IFacturaService, FacturaService>();
             services.AddSingleton<IProcesaDatos, ProcesarDatos>();
             services.AddSingleton<IRecibeSuscripcion, RecibeSuscripcion>();
@@ -44,6 +50,7 @@ namespace ApiHistorico
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication();
             app.UseMvc();
 
             IRecibeSuscripcion suscripcion = app.ApplicationServices.GetService<IRecibeSuscripcion>();

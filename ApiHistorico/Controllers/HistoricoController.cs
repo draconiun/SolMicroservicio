@@ -1,16 +1,18 @@
 ﻿using ApiHistorico.Model;
 using ApiHistorico.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiHistorico.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FacturaController : ControllerBase
+    [Authorize]
+    public class HistoricoController : ControllerBase
     {
         private readonly IFacturaService facturaService;
 
-        public FacturaController(IFacturaService facturaService)
+        public HistoricoController(IFacturaService facturaService)
         {
             this.facturaService = facturaService;
         }
