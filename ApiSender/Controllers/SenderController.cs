@@ -16,7 +16,7 @@ namespace ApiSender.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class SenderController : ControllerBase
     {
         private readonly IOptions<ParametroConfig> configuration;
