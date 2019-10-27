@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApiHistorico.Helper;
 using ApiHistorico.Model;
 using ApiHistorico.Services;
 using Microsoft.AspNetCore.Builder;
@@ -31,8 +32,8 @@ namespace ApiHistorico
             services.Configure<ParametroConfig>(Configuration);
 
             services.AddTransient<IFacturaService, FacturaService>();
-
-
+            services.AddSingleton<IProcesaDatos, ProcesarDatos>();
+            services.AddSingleton<IRecibeSuscripcion, RecibeSuscripcion>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +45,9 @@ namespace ApiHistorico
             }
 
             app.UseMvc();
+
+            IRecibeSuscripcion suscripcion = app.ApplicationServices.GetService<IRecibeSuscripcion>();
+            suscripcion.PreparaFiltro().GetAwaiter().GetResult();
         }
     }
 }
