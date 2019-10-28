@@ -19,6 +19,13 @@ namespace ApiFactura
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) => {
+                    IConfigurationRoot configuration = new ConfigurationBuilder()
+                        .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                        .Build();
+
+                    config.AddEnvironmentVariables();
+                })
                 .UseStartup<Startup>();
     }
 }
