@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiFactura", "ApiFactura\Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiSeguridad", "ApiSeguridad\ApiSeguridad.csproj", "{3E91417C-939A-48BD-A1E3-62CD20EC1948}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiSender", "ApiSender\ApiSender.csproj", "{B8805E1D-654A-4F53-9A3B-28CE0CEA8219}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiSender", "ApiSender\ApiSender.csproj", "{B8805E1D-654A-4F53-9A3B-28CE0CEA8219}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiHistorico", "ApiHistorico\ApiHistorico.csproj", "{50248F65-2D19-488E-ADE2-C99A673DD822}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiHistorico", "ApiHistorico\ApiHistorico.csproj", "{50248F65-2D19-488E-ADE2-C99A673DD822}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacturaFunctionApp", "FacturaFunctionApp\FacturaFunctionApp.csproj", "{6D59837B-C791-414B-BAB2-D13AA6F9B49B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{50248F65-2D19-488E-ADE2-C99A673DD822}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50248F65-2D19-488E-ADE2-C99A673DD822}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50248F65-2D19-488E-ADE2-C99A673DD822}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D59837B-C791-414B-BAB2-D13AA6F9B49B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D59837B-C791-414B-BAB2-D13AA6F9B49B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D59837B-C791-414B-BAB2-D13AA6F9B49B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D59837B-C791-414B-BAB2-D13AA6F9B49B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
