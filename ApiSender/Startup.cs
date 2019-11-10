@@ -25,6 +25,18 @@ namespace ApiSender
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string urlSeguridad = Environment.GetEnvironmentVariable("UrlSeguridad");
+            if (!string.IsNullOrEmpty(urlSeguridad))
+            {
+                urlSeguridad = Configuration.GetValue<string>("UrlSeguridad");
+            }
+
+            string apiNameSeguridad = Environment.GetEnvironmentVariable("ApiNameSeguridad");
+            if (!string.IsNullOrEmpty(apiNameSeguridad))
+            {
+                apiNameSeguridad = Configuration.GetValue<string>("ApiNameSeguridad");
+            }
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddOptions();
             services.Configure<ParametroConfig>(Configuration);
@@ -34,9 +46,9 @@ namespace ApiSender
                     .AddIdentityServerAuthentication(
                         options =>
                         {
-                            options.Authority = Configuration.GetValue<string>("UrlSeguridad");
+                            options.Authority = urlSeguridad;
                             options.RequireHttpsMetadata = false;
-                            options.ApiName = Configuration.GetValue<string>("ApiNameSeguridad");
+                            options.ApiName = apiNameSeguridad;
                         }
                     );
         }
