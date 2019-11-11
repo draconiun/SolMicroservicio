@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apiseguridadgalaxy
+spec:
+  selector:
+    matchLabels:
+      app: apiseguridadgalaxy
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: apiseguridadgalaxy
+    spec:
+      containers:
+      - name: apiseguridadgalaxy
+        image: aaronma/apiseguridadgalaxy:1.0.0
+        imagePullPolicy: Always        
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apiseguridadgalaxy
+  labels:
+    app: apiseguridadgalaxy
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+      name: http-traffic
+  selector:
+    app: apiseguridadgalaxy
+  type: LoadBalancer

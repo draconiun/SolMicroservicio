@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apifacturagalaxy
+spec:
+  selector:
+    matchLabels:
+      app: apifacturagalaxy
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: apifacturagalaxy
+    spec:
+      containers:
+      - name: apifacturagalaxy
+        env:
+        - name: CnnBd
+          value: "Data Source=srvventasayma.database.windows.net;Initial Catalog=dbVentas;User ID=galaxy;Password = A123456789123$;"
+        - name: UrlSeguridad
+          value: "http://52.155.94.21:8080/"
+        - name: ApiNameSeguridad
+          value: apifactura
+        - name: BusUrl
+          value: "Endpoint=sb://busgalaxyayma.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=QhhQ9HUihfGSsrgx4sBw//ya7M8CSGb/DvlMW/ftjfk="
+        - name: BusTopic
+          value: pedidosender
+        - name: BusSuscriptor
+          value: facturasql
+        image: aaronma/apifacturagalaxy:1.0.0
+        imagePullPolicy: Always        
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apifacturagalaxy
+  labels:
+    app: apifacturagalaxy
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+      name: http-traffic
+  selector:
+    app: apifacturagalaxy
+  type: LoadBalancer
