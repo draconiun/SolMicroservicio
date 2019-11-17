@@ -1,33 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: apifacturagalaxy
+  name: apihistoricogalaxy
 spec:
   selector:
     matchLabels:
-      app: apifacturagalaxy
+      app: apihistoricogalaxy
   replicas: 2
   template:
     metadata:
       labels:
-        app: apifacturagalaxy
+        app: apihistoricogalaxy
     spec:
       containers:
-      - name: apifacturagalaxy
+      - name: apihistoricogalaxy
         env:
-        - name: CnnBd
-          value: "Data Source=srvventasayma.database.windows.net;Initial Catalog=dbVentas;User ID=galaxy;Password = A123456789123$;"
+        - name: MongoServer
+          value: "mongodb://facturadbayma:T6lQxZpOjAub63UOMvRkPmZsBruR7mxd81yQF9DZOnk0jggNPfSXVVgVX6KLZvBWRC4XrxpzhTlKnLVmAecS4g==@facturadbayma.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@facturadbayma@&retryWrites=false"
+        - name: MongoDbname
+          value: "ventasdb"
+        - name: MongoColName
+          value: "factura"
         - name: UrlSeguridad
           value: "http://apiseguridadgalaxy:8080/"
         - name: ApiNameSeguridad
-          value: apifactura
+          value: apihistorico
         - name: BusUrl
           value: "Endpoint=sb://busgalaxyayma.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=QhhQ9HUihfGSsrgx4sBw//ya7M8CSGb/DvlMW/ftjfk="
         - name: BusTopic
           value: pedidosender
         - name: BusSuscriptor
-          value: facturasql
-        image: aaronma/apifacturagalaxy:1.0.0
+          value: facturahistorico
+        image: aaronma/apihistoricogalaxy:1.0.0
         imagePullPolicy: Always        
         ports:
         - containerPort: 8080
@@ -35,9 +39,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: apifacturagalaxy
+  name: apihistoricogalaxy
   labels:
-    app: apifacturagalaxy
+    app: apihistoricogalaxy
 spec:
   ports:
     - port: 8080
@@ -45,5 +49,5 @@ spec:
       targetPort: 8080
       name: http-traffic
   selector:
-    app: apifacturagalaxy
+    app: apihistoricogalaxy
   type: LoadBalancer

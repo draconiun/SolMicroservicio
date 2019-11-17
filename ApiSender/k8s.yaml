@@ -16,7 +16,7 @@ spec:
       - name: apisendergalaxy
         env:
         - name: UrlSeguridad
-          value: "http://52.155.94.21:8080/"
+          value: "http://apiseguridadgalaxy:8080/"
         - name: ApiNameSeguridad
           value: apisender
         - name: BusUrl
