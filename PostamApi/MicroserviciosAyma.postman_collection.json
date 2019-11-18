@@ -1,0 +1,907 @@
+{
+	"info": {
+		"_postman_id": "b948ce2c-3e87-4215-abe0-d3a309c11f56",
+		"name": "MicroserviciosAyma",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "VM",
+			"item": [
+				{
+					"name": "Token - ApiSeguridad",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "angular",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "secret",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "apihistorico apifactura apisender",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "alice",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "23.102.34.16:8081/connect/token",
+							"host": [
+								"23",
+								"102",
+								"34",
+								"16"
+							],
+							"port": "8081",
+							"path": [
+								"connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Encolar - ApiSender",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjZiODVjNGJkODZhYjIyOGVmMWEyYmExODU1NjA5YTM4IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzM0MjQxNjAsImV4cCI6MTU3MzQyNzc2MCwiaXNzIjoiaHR0cDovLzIzLjEwMi4zNC4xNjo4MDgxIiwiYXVkIjpbImh0dHA6Ly8yMy4xMDIuMzQuMTY6ODA4MS9yZXNvdXJjZXMiLCJhcGlmYWN0dXJhIiwiYXBpaGlzdG9yaWNvIiwiYXBpc2VuZGVyIl0sImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzdWIiOiIxIiwiYXV0aF90aW1lIjoxNTczNDI0MTYwLCJpZHAiOiJsb2NhbCIsInNjb3BlIjpbImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iLCJhcGlzZW5kZXIiXSwiYW1yIjpbInB3ZCJdfQ.KbgQddezNvwqkZEsZwzerpwomUz1ntoo8HUkVGRBp_bkVzLv1jFdEJ59gj6CS2d0KNzvXv4yJlxW5fXMmyIwdxf-CnBZMvHLHmkomjRNBuJSGhMDkMT0GvX-Mzamd8zSaH3KZT0qauqB0uUfmjnLHFSWIO-F1RGkItJ4mLFR2Mrg_C5fw6V-OEklxEsO0f5KtFWRwq51zNDhKkYEFrxZM25IuTm8DREJ82q40cPFOmzYJBcbx81jGQMEbq0nWxcuRnKbbIhz5DsVlziDl8r4ZACgqb79ERnwKJTzq2wCw0UK4QqK9Vr4JygdIiOV-Ab87T0CB83xkXisg7kzfIil2Q",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"NombreCliente\" :\"Nitrosss\",\n\t\"Precio\" : 862\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "23.102.34.16:8086/api/sender",
+							"host": [
+								"23",
+								"102",
+								"34",
+								"16"
+							],
+							"port": "8086",
+							"path": [
+								"api",
+								"sender"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Histórico - ApiHistorico",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZiODVjNGJkODZhYjIyOGVmMWEyYmExODU1NjA5YTM4IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzM0Mjc2MTcsImV4cCI6MTU3MzQzMTIxNywiaXNzIjoiaHR0cDovLzIzLjEwMi4zNC4xNjo4MDgxIiwiYXVkIjpbImh0dHA6Ly8yMy4xMDIuMzQuMTY6ODA4MS9yZXNvdXJjZXMiLCJhcGlmYWN0dXJhIiwiYXBpaGlzdG9yaWNvIiwiYXBpc2VuZGVyIl0sImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzdWIiOiIxIiwiYXV0aF90aW1lIjoxNTczNDI3NjE3LCJpZHAiOiJsb2NhbCIsInNjb3BlIjpbImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iLCJhcGlzZW5kZXIiXSwiYW1yIjpbInB3ZCJdfQ.izUjwRXXi0LllDhhL1tC5xBnS_4xEmpkxkkBVh-NdCIIcHKm2Ir3jOj3gBIp20uEdJCY3-L3ZZuA46295cQ6q7kzjuPE3NCiCBcejUGOXyLBtLdmaNCg4UelTDVQ8gRBmUJxj4fdb0sm5tTQT5dk4FG-S514Bsig_8QzPIrNMJbb6Ph-3DL0l1UGX1IVs6d6IjEIAj5xJAYA3_ak-zrulO1nwkTMgTsdBx44uuUzLICf-JKEK858KyhacHj50jB3jMaB7iRbGpput4mYf0tAyLW8XhbnSbbnA7sVdAhaBOOQCr3G9CLhfJY9KO7_DrZP2jxSAAmCtj0F_tqo5u_29w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://23.102.34.16:8088/api/historico",
+							"protocol": "http",
+							"host": [
+								"23",
+								"102",
+								"34",
+								"16"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"historico"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "k8s",
+			"item": [
+				{
+					"name": "Token - ApiSeguridad",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "angular",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "secret",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "apihistorico apifactura apisender",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "alice",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "52.155.94.21:8080/connect/token",
+							"host": [
+								"52",
+								"155",
+								"94",
+								"21"
+							],
+							"port": "8080",
+							"path": [
+								"connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Encolar - ApiSender",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZiODVjNGJkODZhYjIyOGVmMWEyYmExODU1NjA5YTM4IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzQwMjQzNDksImV4cCI6MTU3NDAyNzk0OSwiaXNzIjoiaHR0cDovLzUyLjE1NS45NC4yMTo4MDgwIiwiYXVkIjpbImh0dHA6Ly81Mi4xNTUuOTQuMjE6ODA4MC9yZXNvdXJjZXMiLCJhcGlmYWN0dXJhIiwiYXBpaGlzdG9yaWNvIiwiYXBpc2VuZGVyIl0sImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzdWIiOiIxIiwiYXV0aF90aW1lIjoxNTc0MDI0MzQ5LCJpZHAiOiJsb2NhbCIsInNjb3BlIjpbImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iLCJhcGlzZW5kZXIiXSwiYW1yIjpbInB3ZCJdfQ.Ydem-J5cTvyinBK2sNpuqpDv7mWVca521UlzNRlNvxzEixwQLr5EIcgzzZKnMp3OKh2fSiFBNJ6uRJwNq4Zvw_swvKbtdWpjDRFQoHWDNrhsurSFZ6-juuh7nZvae_qVWF_xOHuhtv1ImW4RykplxjdSJ_6DhmitIjOl4M4Et9JNJvd4qZdrfiGxfMdJAXk7Z6iEd29F3hrVXdDNSfiaud8TUVlztDdVs7AvJ_clhJM84KifeZg2JSL8WoVtA1haFB9BLejIb8ldEBsKJSu7OQ6OmFMnJYnUDLBxC-ZJvLuH2p5yg0tB5X70eHb1hcZhBEp4pvEJk8cDQH__SOmyPw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"NombreCliente\" :\"En clase 5\",\n\t\"Precio\" : 875\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "52.158.30.179:8080/api/sender",
+							"host": [
+								"52",
+								"158",
+								"30",
+								"179"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sender"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Factura - ApiFactura",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZiODVjNGJkODZhYjIyOGVmMWEyYmExODU1NjA5YTM4IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzQwMjQzNDksImV4cCI6MTU3NDAyNzk0OSwiaXNzIjoiaHR0cDovLzUyLjE1NS45NC4yMTo4MDgwIiwiYXVkIjpbImh0dHA6Ly81Mi4xNTUuOTQuMjE6ODA4MC9yZXNvdXJjZXMiLCJhcGlmYWN0dXJhIiwiYXBpaGlzdG9yaWNvIiwiYXBpc2VuZGVyIl0sImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzdWIiOiIxIiwiYXV0aF90aW1lIjoxNTc0MDI0MzQ5LCJpZHAiOiJsb2NhbCIsInNjb3BlIjpbImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iLCJhcGlzZW5kZXIiXSwiYW1yIjpbInB3ZCJdfQ.Ydem-J5cTvyinBK2sNpuqpDv7mWVca521UlzNRlNvxzEixwQLr5EIcgzzZKnMp3OKh2fSiFBNJ6uRJwNq4Zvw_swvKbtdWpjDRFQoHWDNrhsurSFZ6-juuh7nZvae_qVWF_xOHuhtv1ImW4RykplxjdSJ_6DhmitIjOl4M4Et9JNJvd4qZdrfiGxfMdJAXk7Z6iEd29F3hrVXdDNSfiaud8TUVlztDdVs7AvJ_clhJM84KifeZg2JSL8WoVtA1haFB9BLejIb8ldEBsKJSu7OQ6OmFMnJYnUDLBxC-ZJvLuH2p5yg0tB5X70eHb1hcZhBEp4pvEJk8cDQH__SOmyPw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "52.156.193.240:8080/api/factura",
+							"host": [
+								"52",
+								"156",
+								"193",
+								"240"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"factura"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Proxy Reverso",
+			"item": [
+				{
+					"name": "Obtener token - ApiSeguridad",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "angular",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "secret",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "apihistorico apifactura apisender",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "alice",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "52.155.237.143:8095/connect/token",
+							"host": [
+								"52",
+								"155",
+								"237",
+								"143"
+							],
+							"port": "8095",
+							"path": [
+								"connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Encolar - ApiSender",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZiODVjNGJkODZhYjIyOGVmMWEyYmExODU1NjA5YTM4IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzQwMjY5NzcsImV4cCI6MTU3NDAzMDU3NywiaXNzIjoiaHR0cDovL2FwaXNlZ3VyaWRhZGdhbGF4eTo4MDgwIiwiYXVkIjpbImh0dHA6Ly9hcGlzZWd1cmlkYWRnYWxheHk6ODA4MC9yZXNvdXJjZXMiLCJhcGlmYWN0dXJhIiwiYXBpaGlzdG9yaWNvIiwiYXBpc2VuZGVyIl0sImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzdWIiOiIxIiwiYXV0aF90aW1lIjoxNTc0MDI2OTc3LCJpZHAiOiJsb2NhbCIsInNjb3BlIjpbImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iLCJhcGlzZW5kZXIiXSwiYW1yIjpbInB3ZCJdfQ.GqVAFj_jZ2wHH5gUIB0JH7VCGmZQponx-1fpzmRfbTZJzasUb6JFKyWd23BHifzYkjXUKLwT9Z42UyLwzXU37Ovt5eaLuHfzdRA329PS_c0yNxc4iWVH4Ob2M8g_JBM9cycjL6ZUUOCkNjpX88PoF7DB2tFzrAppZusxZmRorPJW0Mla5vbfxWuEl7HvtmEe-ZKrjSFZ17L3U5leX8z0h4-R7xhyqayCJ9RRimku__29M0hvJq9T2iVqgyf3deLoCwUd_4m4-y0IpzwM7DM3Il9VzQGchJvdiiaDHp9D7RPXIijGipHj8eo2pUPE-rR-Q-Bh0cUW6lfQsVVFqKzkyw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"NombreCliente\" :\"Proxy reverso 1\",\n\t\"Precio\" : 443\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "52.155.237.143:8095/api/sender",
+							"host": [
+								"52",
+								"155",
+								"237",
+								"143"
+							],
+							"port": "8095",
+							"path": [
+								"api",
+								"sender"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Factura - ApiFactura",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZiODVjNGJkODZhYjIyOGVmMWEyYmExODU1NjA5YTM4IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzQwMjY5NzcsImV4cCI6MTU3NDAzMDU3NywiaXNzIjoiaHR0cDovL2FwaXNlZ3VyaWRhZGdhbGF4eTo4MDgwIiwiYXVkIjpbImh0dHA6Ly9hcGlzZWd1cmlkYWRnYWxheHk6ODA4MC9yZXNvdXJjZXMiLCJhcGlmYWN0dXJhIiwiYXBpaGlzdG9yaWNvIiwiYXBpc2VuZGVyIl0sImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzdWIiOiIxIiwiYXV0aF90aW1lIjoxNTc0MDI2OTc3LCJpZHAiOiJsb2NhbCIsInNjb3BlIjpbImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iLCJhcGlzZW5kZXIiXSwiYW1yIjpbInB3ZCJdfQ.GqVAFj_jZ2wHH5gUIB0JH7VCGmZQponx-1fpzmRfbTZJzasUb6JFKyWd23BHifzYkjXUKLwT9Z42UyLwzXU37Ovt5eaLuHfzdRA329PS_c0yNxc4iWVH4Ob2M8g_JBM9cycjL6ZUUOCkNjpX88PoF7DB2tFzrAppZusxZmRorPJW0Mla5vbfxWuEl7HvtmEe-ZKrjSFZ17L3U5leX8z0h4-R7xhyqayCJ9RRimku__29M0hvJq9T2iVqgyf3deLoCwUd_4m4-y0IpzwM7DM3Il9VzQGchJvdiiaDHp9D7RPXIijGipHj8eo2pUPE-rR-Q-Bh0cUW6lfQsVVFqKzkyw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "52.155.237.143:8095/api/factura",
+							"host": [
+								"52",
+								"155",
+								"237",
+								"143"
+							],
+							"port": "8095",
+							"path": [
+								"api",
+								"factura"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Historico - ApiHistorico",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZiODVjNGJkODZhYjIyOGVmMWEyYmExODU1NjA5YTM4IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzQwMjY5NzcsImV4cCI6MTU3NDAzMDU3NywiaXNzIjoiaHR0cDovL2FwaXNlZ3VyaWRhZGdhbGF4eTo4MDgwIiwiYXVkIjpbImh0dHA6Ly9hcGlzZWd1cmlkYWRnYWxheHk6ODA4MC9yZXNvdXJjZXMiLCJhcGlmYWN0dXJhIiwiYXBpaGlzdG9yaWNvIiwiYXBpc2VuZGVyIl0sImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzdWIiOiIxIiwiYXV0aF90aW1lIjoxNTc0MDI2OTc3LCJpZHAiOiJsb2NhbCIsInNjb3BlIjpbImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iLCJhcGlzZW5kZXIiXSwiYW1yIjpbInB3ZCJdfQ.GqVAFj_jZ2wHH5gUIB0JH7VCGmZQponx-1fpzmRfbTZJzasUb6JFKyWd23BHifzYkjXUKLwT9Z42UyLwzXU37Ovt5eaLuHfzdRA329PS_c0yNxc4iWVH4Ob2M8g_JBM9cycjL6ZUUOCkNjpX88PoF7DB2tFzrAppZusxZmRorPJW0Mla5vbfxWuEl7HvtmEe-ZKrjSFZ17L3U5leX8z0h4-R7xhyqayCJ9RRimku__29M0hvJq9T2iVqgyf3deLoCwUd_4m4-y0IpzwM7DM3Il9VzQGchJvdiiaDHp9D7RPXIijGipHj8eo2pUPE-rR-Q-Bh0cUW6lfQsVVFqKzkyw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "52.155.237.143:8095/api/historico",
+							"host": [
+								"52",
+								"155",
+								"237",
+								"143"
+							],
+							"port": "8095",
+							"path": [
+								"api",
+								"historico"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Api Management",
+			"item": [
+				{
+					"name": "Obtener token - ApiSeguridad",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "c6204795c61042e599ec2c5dcbde50fb",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "angular",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "secret",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "apihistorico apifactura apisender",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "alice",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://apigalaxyayma.azure-api.net/factura/connect/token",
+							"protocol": "https",
+							"host": [
+								"apigalaxyayma",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"factura",
+								"connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Encolar Factura - ApiSender",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZiODVjNGJkODZhYjIyOGVmMWEyYmExODU1NjA5YTM4IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzQwMjk2NjksImV4cCI6MTU3NDAzMzI2OSwiaXNzIjoiaHR0cDovL2FwaXNlZ3VyaWRhZGdhbGF4eTo4MDgwIiwiYXVkIjpbImh0dHA6Ly9hcGlzZWd1cmlkYWRnYWxheHk6ODA4MC9yZXNvdXJjZXMiLCJhcGlmYWN0dXJhIiwiYXBpaGlzdG9yaWNvIiwiYXBpc2VuZGVyIl0sImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzdWIiOiIxIiwiYXV0aF90aW1lIjoxNTc0MDI5NjY5LCJpZHAiOiJsb2NhbCIsInNjb3BlIjpbImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iLCJhcGlzZW5kZXIiXSwiYW1yIjpbInB3ZCJdfQ.RYDzhTzSvFm69YZUVPaD1TNj1wV_ar7EqMLNxx-I0V27dBsILnORVDAhixECxEa2M4RpJ1YoE05YyJi1ShRO-4ULZGdygo8TOYa9j-9W0F-3mHWUz36CNY5iPMxDmbEPA9swfxD9qBJH-qzNmnlexDz-IiDP_T6ETfQhoQeuoLkfmFrXBlt4i_A6KKHEc_intaIe1BT8gzgCJNy___FmB0JEGbLYOP9MYzCJklkRbc_gyeVsD5to6kZXDRsmMHtFTRQG4Uz17iQCPto_aoJkNoDDPgG3XuxZjRZz-qGIJAow9dSd0DP5L2fXXpwzYGRP75X9H_JVdYuo6R-aNlvIdA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"NombreCliente\" :\"Api Management\",\n\t\"Precio\" : 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://apigalaxyayma.azure-api.net/factura/api/sender",
+							"protocol": "https",
+							"host": [
+								"apigalaxyayma",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"factura",
+								"api",
+								"sender"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Historico - ApiHistorico",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZiODVjNGJkODZhYjIyOGVmMWEyYmExODU1NjA5YTM4IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzQwMjk2NjksImV4cCI6MTU3NDAzMzI2OSwiaXNzIjoiaHR0cDovL2FwaXNlZ3VyaWRhZGdhbGF4eTo4MDgwIiwiYXVkIjpbImh0dHA6Ly9hcGlzZWd1cmlkYWRnYWxheHk6ODA4MC9yZXNvdXJjZXMiLCJhcGlmYWN0dXJhIiwiYXBpaGlzdG9yaWNvIiwiYXBpc2VuZGVyIl0sImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzdWIiOiIxIiwiYXV0aF90aW1lIjoxNTc0MDI5NjY5LCJpZHAiOiJsb2NhbCIsInNjb3BlIjpbImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iLCJhcGlzZW5kZXIiXSwiYW1yIjpbInB3ZCJdfQ.RYDzhTzSvFm69YZUVPaD1TNj1wV_ar7EqMLNxx-I0V27dBsILnORVDAhixECxEa2M4RpJ1YoE05YyJi1ShRO-4ULZGdygo8TOYa9j-9W0F-3mHWUz36CNY5iPMxDmbEPA9swfxD9qBJH-qzNmnlexDz-IiDP_T6ETfQhoQeuoLkfmFrXBlt4i_A6KKHEc_intaIe1BT8gzgCJNy___FmB0JEGbLYOP9MYzCJklkRbc_gyeVsD5to6kZXDRsmMHtFTRQG4Uz17iQCPto_aoJkNoDDPgG3XuxZjRZz-qGIJAow9dSd0DP5L2fXXpwzYGRP75X9H_JVdYuo6R-aNlvIdA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://apigalaxyayma.azure-api.net/factura/api/historico",
+							"protocol": "https",
+							"host": [
+								"apigalaxyayma",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"factura",
+								"api",
+								"historico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar factura - ApiFactura",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZiODVjNGJkODZhYjIyOGVmMWEyYmExODU1NjA5YTM4IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzQwMjk2NjksImV4cCI6MTU3NDAzMzI2OSwiaXNzIjoiaHR0cDovL2FwaXNlZ3VyaWRhZGdhbGF4eTo4MDgwIiwiYXVkIjpbImh0dHA6Ly9hcGlzZWd1cmlkYWRnYWxheHk6ODA4MC9yZXNvdXJjZXMiLCJhcGlmYWN0dXJhIiwiYXBpaGlzdG9yaWNvIiwiYXBpc2VuZGVyIl0sImNsaWVudF9pZCI6ImFuZ3VsYXIiLCJzdWIiOiIxIiwiYXV0aF90aW1lIjoxNTc0MDI5NjY5LCJpZHAiOiJsb2NhbCIsInNjb3BlIjpbImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iLCJhcGlzZW5kZXIiXSwiYW1yIjpbInB3ZCJdfQ.RYDzhTzSvFm69YZUVPaD1TNj1wV_ar7EqMLNxx-I0V27dBsILnORVDAhixECxEa2M4RpJ1YoE05YyJi1ShRO-4ULZGdygo8TOYa9j-9W0F-3mHWUz36CNY5iPMxDmbEPA9swfxD9qBJH-qzNmnlexDz-IiDP_T6ETfQhoQeuoLkfmFrXBlt4i_A6KKHEc_intaIe1BT8gzgCJNy___FmB0JEGbLYOP9MYzCJklkRbc_gyeVsD5to6kZXDRsmMHtFTRQG4Uz17iQCPto_aoJkNoDDPgG3XuxZjRZz-qGIJAow9dSd0DP5L2fXXpwzYGRP75X9H_JVdYuo6R-aNlvIdA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://apigalaxyayma.azure-api.net/factura/api/factura",
+							"protocol": "https",
+							"host": [
+								"apigalaxyayma",
+								"azure-api",
+								"net"
+							],
+							"path": [
+								"factura",
+								"api",
+								"factura"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "GenerarToken - IdentityServer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "angular",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "secret",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "apihistorico apifactura apisender",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "alice",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:51721/connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51721",
+					"path": [
+						"connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Factura - ApiFactura",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzYjQyZDNhY2Q3MGYyNzgzNDRlYjU2YTY3YjQxNDU1IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzIyMTA0NjQsImV4cCI6MTU3MjIxNDA2NCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MTcyMSIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjUxNzIxL3Jlc291cmNlcyIsImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iXSwiY2xpZW50X2lkIjoiYW5ndWxhciIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE1NzIyMTA0NjQsImlkcCI6ImxvY2FsIiwic2NvcGUiOlsiYXBpZmFjdHVyYSIsImFwaWhpc3RvcmljbyJdLCJhbXIiOlsicHdkIl19.alm8zKH__oknC6XRGyNpdwgVu2Y0gC2rjnNaX3YbcdqqnlIx_-BThSzj_qsMQYa5bZ0CcfKbuJutmYolKrr-3yIT988Nz4Rex2I5H8S_zRpznVs8aKcY1XcUR7nGh0gx2NJ875zkG8LvbsewkR8V9zkGZ7dkk0AQwqD74fVuUku-XqjnqpANtov1e64fgy9h-B0yGjzbB5FLyXwVCrBBSxJH6gDmKFVTG45o3G37uhAfbkOVDg5Z_-14L1uxiJUdd2dx5UTemuE2A5lTRBW_UbU72oJt0GGZZey3RbkRf77DBPJleZ5LIFCwQn9E3NzjmgJjeDBqwHVQR6HF04FeCw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:50884/api/factura",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "50884",
+					"path": [
+						"api",
+						"factura"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grabar Factura - ApiFactura",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzYjQyZDNhY2Q3MGYyNzgzNDRlYjU2YTY3YjQxNDU1IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzE2MDM2NzAsImV4cCI6MTU3MTYwNzI3MCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MTcyMSIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjUxNzIxL3Jlc291cmNlcyIsImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iXSwiY2xpZW50X2lkIjoiYW5ndWxhciIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE1NzE2MDM2NjksImlkcCI6ImxvY2FsIiwic2NvcGUiOlsiYXBpZmFjdHVyYSIsImFwaWhpc3RvcmljbyJdLCJhbXIiOlsicHdkIl19.UxQbHgH7llbZljl7XE5DATdJowtkSLMSjFNpY845yKfLEjU-i33iBqBlgBN_CAppv8zMhcch_ukF5GmtLTKVGWsi5ncFVdVkX4VtBj4igNoNr0KlIuNYJGsC9nraHRWGhU97Vk7qnEdoqbbT1-W3c3ueBGUrzbe_0OaBDN5ShL7y1SRAzNEadEfUf0dinbcx7m0zomPXXHi-OfOOz6OHm3UWRyHYzx5_NjzqvHX7Ms_XZRtltyNBeAeVv8YY9svKRZRovNhyGwJYL7ZWTD6hoH9_kxmahl-yDrBnL0XeC4x9cuv5I0vU0qWWT8M6J7jfHiT2s8cvsSh2DkFPXq_3WA"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"NombreCliente\" :\"Miguelito\",\n\t\"Precio\" : 332\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:50884/api/factura",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "50884",
+					"path": [
+						"api",
+						"factura"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Encolamiento - Guardar factura",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzYjQyZDNhY2Q3MGYyNzgzNDRlYjU2YTY3YjQxNDU1IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzM0MTkyNzMsImV4cCI6MTU3MzQyMjg3MywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MTcyMSIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjUxNzIxL3Jlc291cmNlcyIsImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iLCJhcGlzZW5kZXIiXSwiY2xpZW50X2lkIjoiYW5ndWxhciIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE1NzM0MTkyNzMsImlkcCI6ImxvY2FsIiwic2NvcGUiOlsiYXBpZmFjdHVyYSIsImFwaWhpc3RvcmljbyIsImFwaXNlbmRlciJdLCJhbXIiOlsicHdkIl19.L6UY8Mvu36gARvldJwJjU7h9ZEdgZd-bKUh-6vhl38iIGLHsHgPowm1gTIMGyA2PYAv74GYxzIgBEe21jM2abSW3yGwr1UInXB6Wh8FHQY_2T8rFoJnneEIwY-K32lTuE0DIVlbb4wa37zTUnidaDXnlelzABRekzJEsQvHsKO6qvyDLOk6HyAgLVPP7yrM1KLGuDvQWNYXNr0hisw-DHqAdS8p2-pFEzlkQAfTug8LLQ3wkkbjVD7al-sgdzzX_tq-GPxvuId5P07BmySRfUZFIKC5C-Pstkn7dHWSdCThxVYvxRGAMztrEZKFXjB-g3xO0_LeFRJWSNPjZD1lJ-g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"NombreCliente\" :\"Prueba 10/11/19\",\n\t\"Precio\" : 4395\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:51726/api/sender",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51726",
+					"path": [
+						"api",
+						"sender"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Grabar Factura - ApiHistorico",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"NombreCliente\" :\"Cliente Mongo 3\",\n\t\"Precio\" : 1342\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:54177/api/historico",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "54177",
+					"path": [
+						"api",
+						"historico"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Factura - ApiHistorico",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IjMzYjQyZDNhY2Q3MGYyNzgzNDRlYjU2YTY3YjQxNDU1IiwidHlwIjoiSldUIn0.eyJuYmYiOjE1NzIyMTA0NjQsImV4cCI6MTU3MjIxNDA2NCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MTcyMSIsImF1ZCI6WyJodHRwOi8vbG9jYWxob3N0OjUxNzIxL3Jlc291cmNlcyIsImFwaWZhY3R1cmEiLCJhcGloaXN0b3JpY28iXSwiY2xpZW50X2lkIjoiYW5ndWxhciIsInN1YiI6IjEiLCJhdXRoX3RpbWUiOjE1NzIyMTA0NjQsImlkcCI6ImxvY2FsIiwic2NvcGUiOlsiYXBpZmFjdHVyYSIsImFwaWhpc3RvcmljbyJdLCJhbXIiOlsicHdkIl19.alm8zKH__oknC6XRGyNpdwgVu2Y0gC2rjnNaX3YbcdqqnlIx_-BThSzj_qsMQYa5bZ0CcfKbuJutmYolKrr-3yIT988Nz4Rex2I5H8S_zRpznVs8aKcY1XcUR7nGh0gx2NJ875zkG8LvbsewkR8V9zkGZ7dkk0AQwqD74fVuUku-XqjnqpANtov1e64fgy9h-B0yGjzbB5FLyXwVCrBBSxJH6gDmKFVTG45o3G37uhAfbkOVDg5Z_-14L1uxiJUdd2dx5UTemuE2A5lTRBW_UbU72oJt0GGZZey3RbkRf77DBPJleZ5LIFCwQn9E3NzjmgJjeDBqwHVQR6HF04FeCw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:54177/api/historico",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "54177",
+					"path": [
+						"api",
+						"historico"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
