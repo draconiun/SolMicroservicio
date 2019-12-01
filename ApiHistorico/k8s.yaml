@@ -16,7 +16,7 @@ spec:
       - name: apihistoricogalaxy
         env:
         - name: MongoServer
-          value: "mongodb://facturadbayma:T6lQxZpOjAub63UOMvRkPmZsBruR7mxd81yQF9DZOnk0jggNPfSXVVgVX6KLZvBWRC4XrxpzhTlKnLVmAecS4g==@facturadbayma.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@facturadbayma@&retryWrites=false"
+          value: "mongodb://facturadbaaron:jjKKULL0y4mz7xlQ4ogRF6bS9AfYEf0XeqypiClhAdJ3QKebiLV9lJYNUjcBfLopLoOYtQ9NOsn9FppOLBXH5w==@facturadbaaron.documents.azure.com:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@facturadbaaron@&retryWrites=false"
         - name: MongoDbname
           value: "ventasdb"
         - name: MongoColName
@@ -26,7 +26,7 @@ spec:
         - name: ApiNameSeguridad
           value: apihistorico
         - name: BusUrl
-          value: "Endpoint=sb://busgalaxyayma.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=QhhQ9HUihfGSsrgx4sBw//ya7M8CSGb/DvlMW/ftjfk="
+          value: "Endpoint=sb://busgalaxyaaron.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=39uqcbg+zkiLJ0NC/9D8D6rGH49cA8+fNwspceR0q8Y="
         - name: BusTopic
           value: pedidosender
         - name: BusSuscriptor

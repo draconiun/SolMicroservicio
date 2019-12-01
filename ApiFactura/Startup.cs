@@ -30,19 +30,19 @@ namespace ApiFactura
         public void ConfigureServices(IServiceCollection services)
         {
             string urlSeguridad = Environment.GetEnvironmentVariable("UrlSeguridad");
-            if (!string.IsNullOrEmpty(urlSeguridad))
+            if (string.IsNullOrEmpty(urlSeguridad))
             {
                 urlSeguridad = Configuration.GetValue<string>("UrlSeguridad");
             }
 
             string apiNameSeguridad = Environment.GetEnvironmentVariable("ApiNameSeguridad");
-            if (!string.IsNullOrEmpty(apiNameSeguridad))
+            if (string.IsNullOrEmpty(apiNameSeguridad))
             {
                 apiNameSeguridad = Configuration.GetValue<string>("ApiNameSeguridad");
             }
 
             string CnnBd = Environment.GetEnvironmentVariable("CnnBd");
-            if (!string.IsNullOrEmpty(apiNameSeguridad))
+            if (string.IsNullOrEmpty(apiNameSeguridad))
             {
                 CnnBd = Configuration.GetValue<string>("CnnBd");
             }

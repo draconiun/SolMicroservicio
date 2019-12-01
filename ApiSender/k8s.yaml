@@ -20,7 +20,7 @@ spec:
         - name: ApiNameSeguridad
           value: apisender
         - name: BusUrl
-          value: "Endpoint=sb://busgalaxyayma.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=QhhQ9HUihfGSsrgx4sBw//ya7M8CSGb/DvlMW/ftjfk="
+          value: "Endpoint=sb://busgalaxyaaron.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=39uqcbg+zkiLJ0NC/9D8D6rGH49cA8+fNwspceR0q8Y="
         - name: BusTopic
           value: pedidosender
         image: aaronma/apisendergalaxy:1.0.0
